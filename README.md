@@ -8,7 +8,9 @@
 终端中输入下面的命令即可执行
 
 ```bash
-zsh ffmpegs 目录 类型
+zsh ffmpegs.zsh 目录 类型
 ```
 
->感觉不错的话帮我点个 Star 哟，谢谢~
+![效果演示](http://wx3.sinaimg.cn/large/a6e9cb00ly1fo7vx1d0dog20n30h94qp.gif)
+
+>感觉不错的话帮我点个 Star 哟，谢谢~
