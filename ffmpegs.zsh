@@ -19,8 +19,18 @@ log=$path/log.log
 # 计数
 count=0
 
+# 判断目标类型是否为空
+if [[ ${targetType} ]] {
+    echo "目标类型为 mp4"
+} else {
+    echo "目标类型未指定，设置为默认值 mp4"
+    targetType="mp4"
+}
+
 # 判断输出目录是否为空
-if [[ !${output} ]] {
+if [[ ${output} ]] {
+    echo "输出目录为 $output"
+} else {
     echo "output 为默认值"
     output=$path/output
 }
@@ -59,9 +69,9 @@ for file (*.*) {
             echo "正在转换视频："
             echo "$file >>>> $name.$targetType"
             # 执行视频转换命令
-            echo "$ffmpegPath/ffmpeg -i $file $output/$name.$targetType"
-            if {$ffmpegPath/ffmpeg -i $file $output/$name.$targetType} {
-                count=$count+1
+            echo "$ffmpegPath/ffmpeg -i $file $output/$name.$targetType -threads 1"
+            if {$ffmpegPath/ffmpeg -i $file $output/$name.$targetType -threads 1} {
+                count=$((count+1))
             } else {
                 echo "$file 转换失败" >> $log
             }
